@@ -1,0 +1,33 @@
+setup:
+  dirs:
+    - "{snap_common}/etc/glance.conf.d"
+    - "{snap_common}/etc/glance"
+    - "{snap_common}/log"
+    - "{snap_common}/lock"
+    - "{snap_common}/images"
+  templates:
+    "glance-snap.conf.j2": "{snap_common}/etc/glance.conf.d/glance-snap.conf"
+entry_points:
+  glance-manage:
+    binary: glance-manage
+    config-files:
+      - "{snap}/etc/glance/glance.conf"
+      - "{snap_common}/etc/glance/glance.conf"
+    config-dirs:
+      - "{snap_common}/etc/glance.conf.d"
+  glance-registry:
+    binary: glance-registry
+    config-files:
+      - "{snap}/etc/glance/glance-registry.conf"
+      - "{snap_common}/etc/glance/glance-registry.conf"
+    config-dirs:
+      - "{snap_common}/etc/glance.conf.d"
+    log-file: "{snap_common}/log/glance-registry.log"
+  glance-api:
+    binary: glance-api
+    config-files:
+      - "{snap}/etc/glance/glance-api.conf"
+      - "{snap_common}/etc/glance/glance-api.conf"
+    config-dirs:
+      - "{snap_common}/etc/glance.conf.d"
+    log-file: "{snap_common}/log/glance-api.log"
