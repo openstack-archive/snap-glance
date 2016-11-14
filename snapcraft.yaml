@@ -36,8 +36,25 @@ parts:
       - libffi-dev
       - libssl-dev
       - pkg-config
-  config:
+  templates:
     after:
       - glance
     plugin: dump
     source: conf
+  config:
+    after:
+      - glance
+    plugin: dump
+    source: http://tarballs.openstack.org/glance/glance-master.tar.gz
+    organize:
+      etc/*.conf: etc/glance/
+      etc/*.ini: etc/glance/
+      etc/*.json: etc/glance/
+    filesets:
+      etc: 
+        - etc/glance/*.conf
+        - etc/glance/*.ini
+        - etc/glance/*.json
+    stage: [$etc]
+    snap: [$etc]
+  
