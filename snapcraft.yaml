@@ -38,6 +38,7 @@ parts:
       - libxml2-dev
       - libxslt1-dev
       - pkg-config
+      - gcc
   templates:
     after:
       - glance
