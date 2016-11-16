@@ -55,10 +55,9 @@ parts:
       etc/*.ini: etc/glance/
       etc/*.json: etc/glance/
     filesets:
-      etc: 
+      etc:
         - etc/glance/*.conf
         - etc/glance/*.ini
         - etc/glance/*.json
     stage: [$etc]
     snap: [$etc]
-  
