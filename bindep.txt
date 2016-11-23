@@ -1,2 +1,2 @@
-snapcraft
-lxd
+libsodium-dev [platform:dpkg]
+libapt-pkg-dev [platform:dpkg]
