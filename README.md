@@ -58,6 +58,15 @@ or use the individual service name:
     sudo systemctl restart snap.glance.api
     sudo systemctl restart snap.glance.registry
 
+## Building the Glance snap
+
+Simply clone this repository and then install and run snapcraft:
+
+    git clone https://github.com/openstack-snaps/snap-glance
+    sudo apt install snapcraft
+    cd glance
+    snapcraft
+
 ## Support
 
 Please report any bugs related to this snap on
