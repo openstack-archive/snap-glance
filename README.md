@@ -29,12 +29,12 @@ snap:
 The glance daemons (api and registry) can be configured in a few ways.
 
 Firstly each daemon will detect and read `etc/glance/glance-<daemon>.conf`
-if it exists so you can just place all configuration in this file for each
+if it exists so you can just place all configuration in the file for each
 daemon.
 
 Alternatively all daemons will load all configuration files from
 `etc/glance.conf.d` - in the above example, database and keystone authtoken
-onfiguration is shared across both daemons using configuration snippets in
+configuration is shared across both daemons using configuration snippets in
 separate files in `etc/glance.conf.d`.
 
 For reference, $SNAP\_COMMON is typically located under
