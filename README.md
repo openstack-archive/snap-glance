@@ -56,7 +56,7 @@ To restart all glance services:
 or use the individual service name:
 
     sudo systemctl restart snap.glance.api
-    sudo systemctl restart snap.glance.registy
+    sudo systemctl restart snap.glance.registry
 
 ## Support
 
