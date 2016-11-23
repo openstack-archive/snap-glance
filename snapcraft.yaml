@@ -54,7 +54,7 @@ parts:
     after:
       - glance
     plugin: dump
-    source: conf
+    source: snap
   # TODO: replace below with scriplets once implemented in snapcraft
   config:
     after:
