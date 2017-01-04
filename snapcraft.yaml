@@ -26,6 +26,8 @@ apps:
     command: snap-openstack glance-manage
     plugs:
       - network
+    aliases:
+      - glance-manage
 
 parts:
   glance:
