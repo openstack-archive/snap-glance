@@ -6,26 +6,21 @@ description: |
   to store, browse, share, distribute and manage bootable disk images,
   other data closely associated with initializing compute resources,
   and metadata definitions.
-confinement: strict
+confinement: classic
 grade: devel
+
+environment:
+  PATH: $PATH:$SNAP/bin/
 
 apps:
   api:
     command: snap-openstack glance-api
     daemon: simple
-    plugs:
-      - network
-      - network-bind
   registry:
     command: snap-openstack glance-registry
     daemon: simple
-    plugs:
-      - network
-      - network-bind
   manage:
     command: snap-openstack glance-manage
-    plugs:
-      - network
     aliases:
       - glance-manage
 
@@ -46,21 +41,16 @@ parts:
       - git+https://github.com/openstack/snap.openstack#egg=snap.openstack
     constraints: https://raw.githubusercontent.com/openstack/requirements/master/upper-constraints.txt
     build-packages:
+      - gcc
       - libffi-dev
       - libssl-dev
-      - libxml2-dev
-      - libxslt1-dev
-      - pkg-config
-      - gcc
   templates:
-    after:
-      - glance
+    after: [glance]
     plugin: dump
     source: snap
   # TODO: replace below with scriplets once implemented in snapcraft
   config:
-    after:
-      - glance
+    after: [glance]
     plugin: dump
     source: http://tarballs.openstack.org/glance/glance-master.tar.gz
     organize:
