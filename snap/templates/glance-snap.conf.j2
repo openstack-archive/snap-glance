@@ -1,11 +1,11 @@
 [DEFAULT]
 # Set state path to writable directory
-state_path = {{ snap_common }}
+state_path = /var/lib/glance
 
 [oslo_concurrency]
 # Oslo Concurrency lock path
-lock_path = {{ snap_common }}/lock
+lock_path = /var/lock/glance
 
 [glance_store]
 # Set default glance_store path to writable directory
-filesystem_store_datadir = {{ snap_common }}/images
+filesystem_store_datadir = /var/lib/glance/images

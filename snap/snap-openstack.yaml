@@ -1,33 +1,36 @@
 setup:
   dirs:
-    - "{snap_common}/etc/glance.conf.d"
-    - "{snap_common}/etc/glance"
-    - "{snap_common}/log"
-    - "{snap_common}/lock"
-    - "{snap_common}/images"
+    - "{snap_common}/etc/glance/conf.d"
+    - "{snap_common}/lib/glance/images"
+    - "{snap_common}/log/glance"
+    - "{snap_common}/lock/glance"
+  symlinks:
+    "{snap_common}/etc/glance": /etc/glance
+    "{snap_common}/lib/glance": /var/lib/glance
+    "{snap_common}/log/glance": /var/log/glance
+    "{snap_common}/lock/glance": /var/lock/glance
   templates:
-    "glance-snap.conf.j2": "{snap_common}/etc/glance.conf.d/glance-snap.conf"
+    glance-snap.conf.j2: "{snap_common}/etc/glance/conf.d/glance-snap.conf"
+  copyfiles:
+    "{snap}/etc/glance": "{snap_common}/etc/glance"
 entry_points:
   glance-manage:
     binary: glance-manage
     config-files:
-      - "{snap}/etc/glance/glance.conf"
-      - "{snap_common}/etc/glance/glance.conf"
+      - "/etc/glance/glance.conf"
     config-dirs:
-      - "{snap_common}/etc/glance.conf.d"
+      - "/etc/glance/conf.d"
   glance-registry:
     binary: glance-registry
     config-files:
-      - "{snap}/etc/glance/glance-registry.conf"
-      - "{snap_common}/etc/glance/glance-registry.conf"
+      - "/etc/glance/glance-registry.conf"
     config-dirs:
-      - "{snap_common}/etc/glance.conf.d"
-    log-file: "{snap_common}/log/glance-registry.log"
+      - "/etc/glance/conf.d"
+    log-file: "/var/log/glance/glance-registry.log"
   glance-api:
     binary: glance-api
     config-files:
-      - "{snap}/etc/glance/glance-api.conf"
-      - "{snap_common}/etc/glance/glance-api.conf"
+      - "/etc/glance/glance-api.conf"
     config-dirs:
-      - "{snap_common}/etc/glance.conf.d"
-    log-file: "{snap_common}/log/glance-api.log"
+      - "/etc/glance/conf.d"
+    log-file: "/var/log/glance/glance-api.log"
