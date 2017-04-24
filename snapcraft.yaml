@@ -9,23 +9,27 @@ description: |
 confinement: classic
 grade: devel
 
-environment:
-  PATH: $PATH:$SNAP/bin/
-
 apps:
   api:
-    command: snap-openstack glance-api
+    command: >
+      env PYTHONPATH=$PYTHONPATH:$SNAP/lib/python2.7/site-packages
+      $SNAP/usr/bin/python2 $SNAP/bin/snap-openstack glance-api
     daemon: simple
   registry:
-    command: snap-openstack glance-registry
+    command: >
+      env PYTHONPATH=$PYTHONPATH:$SNAP/lib/python2.7/site-packages
+      $SNAP/usr/bin/python2 $SNAP/bin/snap-openstack glance-registry
     daemon: simple
   manage:
-    command: snap-openstack glance-manage
+    command: >
+      env PYTHONPATH=$PYTHONPATH:$SNAP/lib/python2.7/site-packages
+      $SNAP/usr/bin/python2 $SNAP/bin/snap-openstack glance-manage
     aliases:
       - glance-manage
 
 parts:
   glance:
+    after: [python]
     plugin: python
     python-version: python2
     source: http://tarballs.openstack.org/glance/glance-master.tar.gz
@@ -44,6 +48,11 @@ parts:
       - gcc
       - libffi-dev
       - libssl-dev
+    stage:
+      - -usr/bin/2to3
+      - -usr/bin/pydoc
+      - -usr/bin/python2.7
+      - -usr/lib/python2.7
     install:
       touch $SNAPCRAFT_PART_INSTALL/lib/python2.7/site-packages/paste/__init__.py
       touch $SNAPCRAFT_PART_INSTALL/lib/python2.7/site-packages/repoze/__init__.py
@@ -67,3 +76,16 @@ parts:
         - etc/glance/*.json
     stage: [$etc]
     snap: [$etc]
+  python:
+    source: https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz
+    plugin: autotools
+    configflags:
+      - --prefix=/usr
+      - --enable-shared
+      - --enable-unicode=ucs4
+    build-packages:
+      - libssl-dev
+    prime:
+      - -usr/include
+    install:
+      $SNAPCRAFT_PART_INSTALL/usr/bin/python2 -m ensurepip
