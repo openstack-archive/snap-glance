@@ -1,5 +1,5 @@
 name: glance
-version: ocata
+version: pike
 summary: OpenStack Image Service (glance)
 description: |
   Glance is a project that provides services and associated libraries
