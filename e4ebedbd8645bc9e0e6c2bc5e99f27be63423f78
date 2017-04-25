@@ -1,0 +1,8 @@
+Code-Review+2: James Page <james.page@canonical.com>
+Workflow+1: James Page <james.page@canonical.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Tue, 25 Apr 2017 10:23:11 +0000
+Reviewed-on: https://review.openstack.org/459311
+Project: openstack/snap-glance
+Branch: refs/heads/master
