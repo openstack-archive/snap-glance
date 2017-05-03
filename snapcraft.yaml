@@ -34,20 +34,22 @@ parts:
     python-version: python2
     source: http://tarballs.openstack.org/glance/glance-master.tar.gz
     python-packages:
-      - pymysql
       - httplib2
-      - python-swiftclient
       - os-brick
-      - python-cinderclient
       - oslo.rootwrap
       - oslo.vmware
+      - pymysql
+      - python-cinderclient
       - python-memcached
+      - python-swiftclient
       - git+https://github.com/openstack/snap.openstack#egg=snap.openstack
     constraints: https://raw.githubusercontent.com/openstack/requirements/master/upper-constraints.txt
     build-packages:
       - gcc
       - libffi-dev
       - libssl-dev
+      - libxml2-dev
+      - libxslt1-dev
     stage:
       - -usr/bin/2to3
       - -usr/bin/pydoc
