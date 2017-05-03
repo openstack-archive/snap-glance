@@ -32,7 +32,7 @@ parts:
     after: [python]
     plugin: python
     python-version: python2
-    source: http://tarballs.openstack.org/glance/glance-master.tar.gz
+    source: http://tarballs.openstack.org/glance/glance-stable-ocata.tar.gz
     python-packages:
       - httplib2
       - os-brick
@@ -43,7 +43,7 @@ parts:
       - python-memcached
       - python-swiftclient
       - git+https://github.com/openstack/snap.openstack#egg=snap.openstack
-    constraints: https://raw.githubusercontent.com/openstack/requirements/master/upper-constraints.txt
+    constraints: https://raw.githubusercontent.com/openstack/requirements/stable/ocata/upper-constraints.txt
     build-packages:
       - gcc
       - libffi-dev
@@ -66,7 +66,7 @@ parts:
   config:
     after: [glance]
     plugin: dump
-    source: http://tarballs.openstack.org/glance/glance-master.tar.gz
+    source: http://tarballs.openstack.org/glance/glance-stable-ocata.tar.gz
     organize:
       etc/*.conf: etc/glance/
       etc/*.ini: etc/glance/
