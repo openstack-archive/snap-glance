@@ -6,18 +6,18 @@ setup:
     - "{snap_common}/lock"
   templates:
     glance-snap.conf.j2: "{snap_common}/etc/glance/conf.d/glance-snap.conf"
-  copyfiles:
-    "{snap}/etc/glance": "{snap_common}/etc/glance"
 entry_points:
   glance-manage:
     binary: "{snap}/bin/glance-manage"
     config-files:
+      - "{snap}/etc/glance/glance.conf"
       - "{snap_common}/etc/glance/glance.conf"
     config-dirs:
       - "{snap_common}/etc/glance/conf.d"
   glance-registry:
     binary: "{snap}/bin/glance-registry"
     config-files:
+      - "{snap}/etc/glance/glance-registry.conf"
       - "{snap_common}/etc/glance/glance-registry.conf"
     config-dirs:
       - "{snap_common}/etc/glance/conf.d"
@@ -25,6 +25,7 @@ entry_points:
   glance-api:
     binary: "{snap}/bin/glance-api"
     config-files:
+      - "{snap}/etc/glance/glance-api.conf"
       - "{snap_common}/etc/glance/glance-api.conf"
     config-dirs:
       - "{snap_common}/etc/glance/conf.d"
