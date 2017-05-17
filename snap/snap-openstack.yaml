@@ -1,11 +1,20 @@
 setup:
+  users:
+    glance: [glance]
+  default_owner: "root:glance"
   dirs:
+    - "{snap_common}/etc"
     - "{snap_common}/etc/glance/conf.d"
+    - "{snap_common}/lib"
     - "{snap_common}/lib/images"
-    - "{snap_common}/log"
     - "{snap_common}/lock"
+    - "{snap_common}/log"
   templates:
     glance-snap.conf.j2: "{snap_common}/etc/glance/conf.d/glance-snap.conf"
+  rchown:
+    "{snap_common}/lib": "glance:glance"
+    "{snap_common}/lock": "glance:glance"
+    "{snap_common}/log": "glance:glance"
 entry_points:
   glance-manage:
     binary: "{snap}/bin/glance-manage"
@@ -14,6 +23,8 @@ entry_points:
       - "{snap_common}/etc/glance/glance.conf"
     config-dirs:
       - "{snap_common}/etc/glance/conf.d"
+    run-as:
+      glance: [glance]
   glance-registry:
     binary: "{snap}/bin/glance-registry"
     config-files:
@@ -22,6 +33,8 @@ entry_points:
     config-dirs:
       - "{snap_common}/etc/glance/conf.d"
     log-file: "{snap_common}/log/glance-registry.log"
+    run-as:
+      glance: [glance]
   glance-api:
     binary: "{snap}/bin/glance-api"
     config-files:
@@ -30,3 +43,5 @@ entry_points:
     config-dirs:
       - "{snap_common}/etc/glance/conf.d"
     log-file: "{snap_common}/log/glance-api.log"
+    run-as:
+      glance: [glance]
