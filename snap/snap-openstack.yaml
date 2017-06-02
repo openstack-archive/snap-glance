@@ -19,8 +19,9 @@ entry_points:
   glance-manage:
     binary: "{snap}/bin/glance-manage"
     config-files:
-      - "{snap}/etc/glance/glance.conf"
-      - "{snap_common}/etc/glance/glance.conf"
+      - "{snap}/etc/glance/glance-manage.conf"
+    config-files-override:
+      - "{snap_common}/etc/glance/glance-manage.conf"
     config-dirs:
       - "{snap_common}/etc/glance/conf.d"
     run-as:
@@ -29,6 +30,7 @@ entry_points:
     binary: "{snap}/bin/glance-registry"
     config-files:
       - "{snap}/etc/glance/glance-registry.conf"
+    config-files-override:
       - "{snap_common}/etc/glance/glance-registry.conf"
     config-dirs:
       - "{snap_common}/etc/glance/conf.d"
@@ -39,6 +41,7 @@ entry_points:
     binary: "{snap}/bin/glance-api"
     config-files:
       - "{snap}/etc/glance/glance-api.conf"
+    config-files-override:
       - "{snap_common}/etc/glance/glance-api.conf"
     config-dirs:
       - "{snap_common}/etc/glance/conf.d"
