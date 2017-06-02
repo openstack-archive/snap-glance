@@ -18,30 +18,24 @@ setup:
 entry_points:
   glance-manage:
     binary: "{snap}/bin/glance-manage"
-    config-files:
-      - "{snap}/etc/glance/glance.conf"
-      - "{snap_common}/etc/glance/glance.conf"
-    config-dirs:
-      - "{snap_common}/etc/glance/conf.d"
+    config-file: "{snap}/etc/glance/glance-manage.conf"
+    config-file-override: "{snap_common}/etc/glance/glance-manage.conf"
+    config-dir: "{snap_common}/etc/glance/conf.d"
     run-as:
       snap-glance: [snap-glance]
   glance-registry:
     binary: "{snap}/bin/glance-registry"
-    config-files:
-      - "{snap}/etc/glance/glance-registry.conf"
-      - "{snap_common}/etc/glance/glance-registry.conf"
-    config-dirs:
-      - "{snap_common}/etc/glance/conf.d"
+    config-file: "{snap}/etc/glance/glance-registry.conf"
+    config-file-override: "{snap_common}/etc/glance/glance-registry.conf"
+    config-dir: "{snap_common}/etc/glance/conf.d"
     log-file: "{snap_common}/log/glance-registry.log"
     run-as:
       snap-glance: [snap-glance]
   glance-api:
     binary: "{snap}/bin/glance-api"
-    config-files:
-      - "{snap}/etc/glance/glance-api.conf"
-      - "{snap_common}/etc/glance/glance-api.conf"
-    config-dirs:
-      - "{snap_common}/etc/glance/conf.d"
+    config-file: "{snap}/etc/glance/glance-api.conf"
+    config-file-override: "{snap_common}/etc/glance/glance-api.conf"
+    config-dir: "{snap_common}/etc/glance/conf.d"
     log-file: "{snap_common}/log/glance-api.log"
     run-as:
       snap-glance: [snap-glance]
