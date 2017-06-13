@@ -29,7 +29,7 @@ apps:
 
 parts:
   glance:
-    after: [python]
+    after: [python, patches]
     plugin: python
     python-version: python2
     source: http://tarballs.openstack.org/glance/glance-stable-ocata.tar.gz
@@ -55,9 +55,16 @@ parts:
       - -usr/bin/pydoc
       - -usr/bin/python2.7
       - -usr/lib/python2.7
-    install:
+    install: |
       touch $SNAPCRAFT_PART_INSTALL/lib/python2.7/site-packages/paste/__init__.py
       touch $SNAPCRAFT_PART_INSTALL/lib/python2.7/site-packages/repoze/__init__.py
+      cd $SNAPCRAFT_PART_INSTALL
+      export PATCH_DIR="../../patches/src"
+      patch -p4 < $PATCH_DIR/oslo-config-dirs.patch
+      cd -
+  patches:
+    plugin: dump
+    source: patches
   templates:
     after: [glance]
     plugin: dump
