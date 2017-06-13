@@ -33,7 +33,7 @@ and $SNAP_COMMON locations:
 
     /var/snap/glance/common/etc/
     └── glance
-        └── conf.d
+        └── glance.conf.d
             └── glance-snap.conf
 
 The glance snap supports configuration updates via its $SNAP_COMMON writable
@@ -41,7 +41,7 @@ area. The default glance configuration can be overridden as follows:
 
     /var/snap/glance/common/etc/
     └── glance
-        ├── conf.d
+        ├── glance.conf.d
         │   ├── glance-snap.conf
         │   ├── database.conf
         │   └── keystone.conf
@@ -50,7 +50,7 @@ area. The default glance configuration can be overridden as follows:
         └── glance-registry.conf
 
 The glance configuration can be overridden or augmented by writing
-configuration snippets to files in the conf.d directory.
+configuration snippets to files in the glance.conf.d directory.
 
 Alternatively, glance configuration can be overridden by adding full config
 files to the glance/ directory. If overriding in this way, you'll need to
