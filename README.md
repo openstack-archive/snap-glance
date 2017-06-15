@@ -7,7 +7,7 @@ service, Glance.
 
 The glance snap can be installed directly from the snap store:
 
-    sudo snap install --edge --classic glance
+    sudo snap install --edge glance
 
 The glance snap is working towards publication across tracks for
 OpenStack releases. The edge channel for each track will contain the tip
@@ -17,8 +17,8 @@ will be published progressively to beta, then candidate, and then stable once
 CI validation completes for the channel. This should result in an experience
 such as:
 
-    sudo snap install --classic --channel=ocata/stable glance
-    sudo snap install --classic --channel=pike/edge glance
+    sudo snap install --channel=ocata/stable glance
+    sudo snap install --channel=pike/edge glance
 
 ## Configuring glance
 
@@ -63,11 +63,6 @@ The services for the glance snap will log to its $SNAP_COMMON writable area:
 /var/snap/glance/common/log.
 
 ## Managing glance
-
-The glance snap will drop privileges to run daemons and commands under
-a regular user named snap-glance. Additionally, permissions and ownership
-of files and directories in /var/snap/glance/common/ are modified to
-restrict access from other users.
 
 The glance snap has alias support that enables use of the well-known
 glance-manage command. To enable the alias, run the following prior to
