@@ -23,8 +23,6 @@ apps:
       - network-bind
   manage:
     command: snap-openstack glance-manage
-    aliases:
-      - glance-manage
     plugs:
       - network
 

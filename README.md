@@ -62,14 +62,6 @@ add those to $SNAP_COMMON as well.
 The services for the glance snap will log to its $SNAP_COMMON writable area:
 /var/snap/glance/common/log.
 
-## Managing glance
-
-The glance snap has alias support that enables use of the well-known
-glance-manage command. To enable the alias, run the following prior to
-using the command:
-
-    sudo snap alias glance.manage glance-manage
-
 ## Restarting glance services
 
 To restart all glance services:
