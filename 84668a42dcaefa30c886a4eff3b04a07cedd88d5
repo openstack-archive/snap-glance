@@ -1,0 +1,8 @@
+Code-Review+2: Corey Bryant <corey.bryant@canonical.com>
+Workflow+1: Corey Bryant <corey.bryant@canonical.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 27 Jul 2017 21:09:53 +0000
+Reviewed-on: https://review.openstack.org/486644
+Project: openstack/snap-glance
+Branch: refs/heads/master
