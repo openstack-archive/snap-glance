@@ -31,11 +31,14 @@ sudo systemctl restart snap.glance.*
 while ! nc -z localhost 9292; do sleep 0.1; done;
 
 openstack image show xenial || {
-    [ -f $HOME/images/xenial-server-cloudimg-amd64-disk1.img ] || {
+    [ -f $HOME/images/cirros-0.3.5-x86_64-disk.img ] || {
+        export http_proxy=$SNAPSTACK_HTTP_PROXY
         mkdir -p $HOME/images
-        wget http://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img \
-            -O ${HOME}/images/xenial-server-cloudimg-amd64-disk1.img
+        wget \
+          http://download.cirros-cloud.net/0.3.5/cirros-0.3.5-x86_64-disk.img \
+          -O ${HOME}/images/cirros-0.3.5-x86_64-disk.img
+        unset http_proxy
     }
-    openstack image create --file ${HOME}/images/xenial-server-cloudimg-amd64-disk1.img \
+    openstack image create --file ${HOME}/images/cirros-0.3.5-x86_64-disk.img \
         --public --container-format=bare --disk-format=qcow2 xenial
 }
