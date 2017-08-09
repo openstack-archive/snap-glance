@@ -4,8 +4,15 @@ set -ex
 
 source $BASE_DIR/admin-openrc
 
+sudo mysql -u root << EOF
+CREATE DATABASE IF NOT EXISTS glance;
+GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' \
+  IDENTIFIED BY 'glance';
+EOF
+
 while sudo [ ! -d /var/snap/glance/common/etc/glance/ ]; do sleep 0.1; done;
 sudo cp -r $BASE_DIR/etc/snap-glance/* /var/snap/glance/common/etc/
+# sudo cp -r $BASE_DIR/etc/* /var/snap/glance/common/etc/
 
 openstack user show glance || {
     openstack user create --domain default --password glance glance
