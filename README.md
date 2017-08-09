@@ -7,7 +7,7 @@ service, Glance.
 
 The glance snap can be installed directly from the snap store:
 
-    sudo snap install --edge glance
+    sudo snap install --channel=ocata/edge glance
 
 The glance snap is working towards publication across tracks for
 OpenStack releases. The edge channel for each track will contain the tip
