@@ -19,6 +19,10 @@ class SnapstackTest(unittest.TestCase):
             snap='glance',
             script_loc='./tests/',
             scripts=['glance.sh'],
+            files=[
+                'etc/snap-glance/glance/glance.conf.d/database.conf',
+                'etc/snap-glance/glance/glance.conf.d/keystone.conf'
+            ],
             snap_store=False)))
 
         # Execute the snapstack tests
