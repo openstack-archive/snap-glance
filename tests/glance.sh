@@ -37,7 +37,7 @@ sudo systemctl restart snap.glance.*
 
 while ! nc -z localhost 9292; do sleep 0.1; done;
 
-openstack image show xenial || {
+openstack image show cirros || {
     [ -f $HOME/images/cirros-0.3.5-x86_64-disk.img ] || {
         export http_proxy=$SNAPSTACK_HTTP_PROXY
         mkdir -p $HOME/images
